@@ -1,0 +1,59 @@
+<{strip}>
+<{* 個別パッチーワーク用オプション情報設定 *}>
+<{$action.xxx}>
+<form id="patchworks_form<{$id}>" action="#" onsubmit="commonCls.sendPost('<{$id}>', Form.serialize($('patchworks_form<{$id}>')), {'target_el':$('<{$id}>'),'focus_flag':true});return false;">
+<input type="hidden" name="action" />
+<input type="hidden" name="block_id" />
+<input type="hidden" name="patchworks_id" />
+
+
+<h2> ID <{$action.patchworks_id}> BLOCK <{$action.block_id}> </h2>
+<h3> 使用中データベース ( <{$action.multidatabase_name}> ) </h3>
+<br />
+<table class="outer" summary="<{$smarty.const._SUMMARY_SETTINGFORM}>">
+
+<tr class="row">
+<th class="nowrap" scope="row">
+<label for="patchworks_item_multidatabase_show_count<{$id}>">
+表示件数
+<br />
+<br />
+<br />
+</label>
+</th>
+<td>
+<input id="patchworks_item_multidatabase_show_count_1" 
+type="radio" name="patchworks_item_multidatabase_show_count" value="1"   
+<{if $action.item.patchworks_item_multidatabase_show_count == 1 }>checked<{/if}> /> 
+1&nbsp;&nbsp;
+<input id="patchworks_item_multidatabase_show_count_2" 
+type="radio" name="patchworks_item_multidatabase_show_count" value="2"  
+<{if $action.item.patchworks_item_multidatabase_show_count==2 }>checked<{/if}>   />
+2&nbsp;&nbsp;
+<input id="patchworks_item_multidatabase_show_count_3" 
+type="radio" name="patchworks_item_multidatabase_show_count" value="3"  
+<{if $action.item.patchworks_item_multidatabase_show_count==3 }>checked<{/if}>   />
+3&nbsp;&nbsp;
+<input id="patchworks_item_multidatabase_show_count_3" 
+type="radio" name="patchworks_item_multidatabase_show_count" value="999"  
+<{if $action.item.patchworks_item_multidatabase_show_count==999 }>checked<{/if}>   />
+all&nbsp;&nbsp;
+
+</td>
+</tr>
+
+
+</table>
+    <div class="btn-bottom">
+        <input class="btn-width" type="submit" value="<{$lang._regist|smarty:nodefaults}>" />
+        <input class="lined_btn btn-width" type="button" value="<{$lang._cancel|smarty:nodefaults}>" onclick="commonCls.sendView('<{$id}>', 'patchworks_view_edit_item');" />
+    </div>
+</form>
+<{include file="../patchworks_script.html"}>
+<script class="nc_script" type="text/javascript">
+    var patchworksForm = $("patchworks_form<{$id}>");
+    patchworksForm["action"].value = "patchworks_action_edit_item";
+    patchworksForm["patchworks_id"].value = "<{$action.patchworks_id}>";
+    patchworksForm["block_id"].value = "<{$action.block_id}>";
+</script>
+<{/strip}>

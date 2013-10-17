@@ -1,0 +1,20 @@
+<table>
+<tr>
+<th style="width:30%">タイトル</th>
+<th style="width:30%">画像</th>
+<th style="width:30%">作成日</th>
+</tr>
+<{foreach from=$action.view item=content}>
+<tr>
+    <td><{$content.1}></td>
+    <td>
+	<{if $content == ""}>
+		<img src="<{""|get_image_url}><{$smarty.const.MULTIDATABASE_SAMPLE_IMAGE}>" class="mdb_metadata_image" alt="NO IMAGE" />
+	<{else}>
+		<img src="<{""|get_image_url}>/<{$content.12|smarty:nodefaults}>&metadata_id=12&download_flag=1" style="max-width:100px;">
+	<{/if}>
+	</td>
+    <td><{$content.insert_time|timezone_date_format:$lang._full_date_format}></td>
+</tr>
+<{/foreach}>
+</table>
